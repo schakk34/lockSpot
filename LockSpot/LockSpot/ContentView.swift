@@ -9,13 +9,17 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack{
+            VStack {
+                Text("Lock Spot").font(.largeTitle).fontWeight(.bold)
+                Text("Find the perfect spot for your next lock in.").multilineTextAlignment(.center).foregroundStyle(.secondary)
+                NavigationLink("View Study Spots") {
+                    SpotListView()
+                }
+                .buttonStyle(.borderedProminent)
+            }
+            .padding()
         }
-        .padding()
     }
 }
 
