@@ -135,7 +135,6 @@ struct SpotDetailView: View {
 
                 }
 
-                // ✅ Report form card
                 VStack(alignment: .leading, spacing: 12) {
                     Text("How busy is it right now?")
                         .font(.headline)
@@ -146,7 +145,7 @@ struct SpotDetailView: View {
                                 selectedRating = rating
                             }
                             .buttonStyle(.borderedProminent)
-                            .tint(selectedRating == rating ? .blue : .gray)
+                            .tint(selectedRating == rating ? Color(red: 0.12, green: 0.45, blue: 0.42) : .gray)
                         }
                     }
 
