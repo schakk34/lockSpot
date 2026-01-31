@@ -8,6 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    private static let tips = [
+        "Tap a pin to open details, then submit a quick report.",
+        "Check out recent reports to see what others have to say.",
+        "Add in comments to specify floor details.",
+        "Click on a pin to enlarge it.",
+        "If you want to see how far it is, open the spot in Maps!"
+    ]
+
+    @State private var tipIndex = 0
+    @State private var hasAppeared = false
+
     var body: some View {
         NavigationStack {
             ZStack {
@@ -63,7 +74,7 @@ struct ContentView: View {
                             .font(.caption)
                             .foregroundStyle(.secondary)
 
-                        Text("Tap a pin to open details, then submit a quick report.")
+                        Text(Self.tips[tipIndex])
                             .font(.subheadline)
                             .multilineTextAlignment(.center)
                     }
@@ -71,6 +82,13 @@ struct ContentView: View {
                     .padding(.vertical, 14)
                     .background(.ultraThinMaterial)
                     .clipShape(RoundedRectangle(cornerRadius: 18))
+                    .onAppear {
+                        if hasAppeared {
+                            tipIndex = (tipIndex + 1) % Self.tips.count
+                        } else {
+                            hasAppeared = true
+                        }
+                    }
 
                     Spacer()
                 }
